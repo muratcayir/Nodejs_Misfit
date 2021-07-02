@@ -30,7 +30,7 @@ app.use("/", pageRoute);
 app.use("/workouts", workoutRoute);
 
 
-const port=3000;
+const port=5000;
 
 app.listen(port,()=>{
     console.log(`Sunucu ${port} portun da çalışıyor`)

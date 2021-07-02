@@ -16,12 +16,13 @@ exports.createWorkout = async (req, res) => {
   }
 };
 
-exports.getAllWorkout = async (req, res) => {
+exports.getAllWorkouts= async (req, res) => {
   try {
     const workouts = await Workout.find();
 
     res.status(200).render("workouts", {
       workouts,
+      page_name:'workouts'
     });
   } catch (error) {
     res.status(400).json({
@@ -30,4 +31,22 @@ exports.getAllWorkout = async (req, res) => {
     });
   }
 };
+
+exports.getWorkout= async (req, res) => {
+  try {
+    const workout = await Workout.findOne({slug:req.params.slug});
+
+    res.status(200).render("workout", {
+      workout,
+      page_name:'workouts'
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error,
+    });
+  }
+};
+
+
 
